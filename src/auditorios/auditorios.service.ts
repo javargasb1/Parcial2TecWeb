@@ -18,7 +18,7 @@ export class AuditoriosService {
   ) {}
 
   // crearAuditorio():
-  // - capacidad > 0
+  // capacidad > 0
   async crearAuditorio(dto: CreateAuditorioDto) {
     if (dto.capacidad <= 0) {
       throw new BadRequestException(

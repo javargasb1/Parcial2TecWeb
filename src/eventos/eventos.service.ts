@@ -26,8 +26,8 @@ export class EventosService {
   ) {}
 
   // crearEvento():
-  // - duracionHoras positiva
-  // - si ponente es Invitado, descripcion >= 50 chars
+  // duracionHoras positiva
+  // si ponente es Invitado, descripcion >= 50 chars
   async crearEvento(dto: CreateEventoDto) {
     if (dto.duracionHoras <= 0) {
       throw new BadRequestException('La duración del evento debe ser positiva');
@@ -71,7 +71,7 @@ export class EventosService {
   }
 
   // aprobarEvento(id):
-  // - Solo puede aprobarse si tiene auditorio asignado
+  // Solo puede aprobarse si tiene auditorio asignado
   async aprobarEvento(id: number) {
     const evento = await this.eventoRepo.findOne({
       where: { id },
@@ -93,7 +93,7 @@ export class EventosService {
   }
 
   // eliminarEvento(id):
-  // - No se puede eliminar si ya está aprobado
+  // No se puede eliminar si ya está aprobado
   async eliminarEvento(id: number) {
     const evento = await this.eventoRepo.findOne({ where: { id } });
 

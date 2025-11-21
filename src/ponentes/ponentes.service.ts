@@ -18,8 +18,8 @@ export class PonentesService {
   ) {}
 
   // crearPonente():
-  // - Interno -> email termina en .edu
-  // - Invitado -> email válido: contiene "@" y algo después de "@"
+  // Interno -> email termina en .edu
+  // Invitado -> email válido: contiene "@" y algo después de "@"
   async crearPonente(dto: CreatePonenteDto) {
     if (dto.tipoPonente === 'Interno') {
       if (!dto.email.endsWith('.edu')) {
@@ -54,7 +54,7 @@ export class PonentesService {
   }
 
   // eliminarPonente(id):
-  // - No se puede eliminar si tiene eventos asociados.
+  // No se puede eliminar si tiene eventos asociados.
   async eliminarPonente(id: number) {
     const ponente = await this.ponenteRepo.findOne({
       where: { id },

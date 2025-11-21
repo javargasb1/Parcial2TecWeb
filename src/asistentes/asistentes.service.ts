@@ -21,8 +21,8 @@ export class AsistentesService {
   ) {}
 
   // registrarAsistente(eventoId, asistente):
-  // - no puede haber dos asistentes con el mismo email en un mismo evento
-  // - no puede superarse la capacidad del auditorio del evento
+  // no puede haber dos asistentes con el mismo email en un mismo evento
+  // no puede superarse la capacidad del auditorio del evento
   async registrarAsistente(eventoId: number, dto: CreateAsistenteDto) {
     const evento = await this.eventoRepo.findOne({
       where: { id: eventoId },
@@ -39,7 +39,7 @@ export class AsistentesService {
       );
     }
 
-    // Regla: no repetir email en el mismo evento
+    // No repetir email en el mismo evento
     const emailYaUsado =
       evento.asistentes?.some((a) => a.email === dto.email) ?? false;
     if (emailYaUsado) {
@@ -48,7 +48,7 @@ export class AsistentesService {
       );
     }
 
-    // Regla: capacidad del auditorio
+    // Capacidad del auditorio
     const capacidad = evento.auditorio.capacidad;
     const inscritos = evento.asistentes?.length ?? 0;
 
@@ -79,7 +79,6 @@ export class AsistentesService {
     return evento.asistentes;
   }
 
-  // helper para debug
   async findAll() {
     return this.asistenteRepo.find();
   }
